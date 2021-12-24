@@ -95,6 +95,12 @@ namespace MergeMP3
 
         private void BtnMerge_Click(object sender, EventArgs e)
         {
+            if (listFiles.Items.Count == 0)
+            {
+                MessageBox.Show(this, "There's no file to merge", ".mp3 files not found!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                return;
+            }
+
             if (File.Exists(TbTargetFile.Text))
             {
                 if (MessageBox.Show(this, $"File '{TbTargetFile.Text}' already exists.\nOverwrite it?", "Target file exists.", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1) == DialogResult.No)
